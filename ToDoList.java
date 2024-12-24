@@ -215,6 +215,7 @@ public class ToDoList {
     private void refreshAllTables() {
         updateIncompleteTable();
         updateCompletedTable();
+        sortTasks();
     }
 
     private void updateIncompleteTable() {
@@ -281,19 +282,6 @@ public class ToDoList {
         } else {
             showErrorDialog("Please enter a valid category.", "Error");
         }
-    }
-
-
-    private List<Task> filterTasksByCategory(String category, boolean isComplete) {
-        List<Task> filteredTasks = new ArrayList<>();
-        for (List<Task> taskList : app.taskMap.values()) {
-            for (Task task : taskList) {
-                if (task.isComplete == isComplete && category.equalsIgnoreCase(task.category)) {
-                    filteredTasks.add(task);
-                }
-            }
-        }
-        return filteredTasks;
     }
 
     // Utility Methods
